@@ -7,6 +7,8 @@ import './index.css';
 import App from './App';
 import { store } from './redux/store';
 
+console.log('Main entry point loaded');
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -14,5 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </Router>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
