@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const DetailsHeader = ({ artistId, artistData, songData }) => {
-  const artist = artistData?.artists[artistId]?.attributes;
+  const artist = artistData?.artist || artistData?.artists?.[artistId]?.attributes;
 
   return (
     <div className="relative w-full flex flex-col">
@@ -13,9 +13,7 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
           alt="profile"
           src={
             artistId
-              ? artist?.artwork?.url
-                .replace('{w}', '500')
-                .replace('{h}', '500')
+              ? artist?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') || artist?.profile_picture?.['500x500'] || artist?.profile_picture?.['150x150']
               : songData?.images?.coverart
           }
           className="sm:w-48 w-28 sm:h-48 h-28 rounded-full object-cover border-2 shadow-xl shadow-black"
@@ -26,13 +24,13 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
             {artistId ? artist?.name : songData?.title}
           </p>
           {!artistId && (
-            <Link to={`/artists/${songData?.artists[0]?.adamid}`}>
+            <Link to={`/artists/${songData?.artists?.[0]?.adamid}`}>
               <p className="text-base text-gray-400 mt-2">{songData?.subtitle}</p>
             </Link>
           )}
 
           <p className="text-base text-gray-400 mt-2">
-            {artistId ? artist?.genreNames[0] : songData?.genres?.primary}
+            {artistId ? (artist?.genreNames?.[0] || artist?.genre) : (songData?.genres?.primary || songData?.genre)}
           </p>
         </div>
       </div>

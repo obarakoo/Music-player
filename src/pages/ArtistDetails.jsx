@@ -14,6 +14,8 @@ const ArtistDetails = () => {
 
   if (error) return <Error />;
 
+  const songs = Array.isArray(artistData?.tracks) ? artistData.tracks : (artistData?.songs ? Object.values(artistData.songs) : []);
+
   return (
     <div className="flex flex-col">
       <DetailsHeader
@@ -22,7 +24,7 @@ const ArtistDetails = () => {
       />
 
       <RelatedSongs
-        data={Object.values(artistData?.songs)}
+        data={songs}
         artistId={artistId}
         isPlaying={isPlaying}
         activeSong={activeSong}
