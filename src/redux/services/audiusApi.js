@@ -45,8 +45,8 @@ const customBaseQuery = async (args, api, extraOptions) => {
     return result;
 };
 
-export const shazamCoreApi = createApi({
-    reducerPath: 'shazamCoreApi',
+export const audiusApi = createApi({
+    reducerPath: 'audiusApi',
     baseQuery: customBaseQuery,
     endpoints: (builder) => ({
         getTopCharts: builder.query({ query: () => '/tracks/trending?app_name=MUSICPLAYER' }),
@@ -99,4 +99,4 @@ export const {
     useGetArtistDetailsQuery,
     useGetSongDetailsQuery,
     useGetSongRelatedQuery,
-} = shazamCoreApi;
+} = audiusApi;
