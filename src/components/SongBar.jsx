@@ -18,8 +18,8 @@ const SongBar = ({ song, i, artistId, isPlaying, activeSong, data }) => {
 
   return (
     <div
-      className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.title === song?.title ? 'bg-[#4c426e]' : 'bg-transparent'
-        } py-2 p-4 rounded-lg cursor-pointer mb-2`}
+      className={`w-full flex flex-row items-center hover:bg-white/10 hover:shadow-glow transition-all duration-300 ${activeSong?.title === song?.title ? 'bg-white/10 backdrop-blur-md shadow-glass border border-white/5' : 'bg-surface-light/30 backdrop-blur-sm'
+        } py-2 p-4 rounded-xl border border-transparent cursor-pointer mb-2`}
     >
       <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
